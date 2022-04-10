@@ -1,24 +1,20 @@
 package com.example.demo;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
 @Configuration
+@EnableTransactionManagement //Нам нужна поддержка Transactional, которая включает прокси Cglib под капотом
+//Можно использовать другие прокси, например, AspectJ
 public class MyApplicationContextConfiguration {
 
     @Bean
-    public DataSource dataSource() {
-        MySqlDataSource dataSource = new MySqlDataSource();
-        dataSource.setUser("root");
-        dataSource.setPassword("s3cr3t");
-        dataSource.setURL("jdbc:mysql://localhost:3306/myDatabase");
-        return dataSource;
-    }
-
-    @Bean
-    public UserDao userDao() {
-        return new UserDao((MySqlDataSource)dataSource());
+    public UserService userService() {
+        return new UserService();
     }
 }
