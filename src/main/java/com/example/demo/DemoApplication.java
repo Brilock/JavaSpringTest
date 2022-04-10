@@ -10,9 +10,10 @@ import javax.sql.DataSource;
 public class DemoApplication {
 
     public static void main(String[] args) {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(/*Указывается конфигурационный класс*/);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(MyApplicationContextConfiguration.class);
+        //ClassPathXmlApplicationContext - из файла xml
         UserDao userDao = ctx.getBean(UserDao.class);
-        User user = userDao.findById(1);
+        //User user = userDao.findById(1);
 
         DataSource dataSource = ctx.getBean(DataSource.class);
 
