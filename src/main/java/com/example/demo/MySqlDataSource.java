@@ -9,7 +9,21 @@ import java.util.logging.Logger;
 
 public class MySqlDataSource implements DataSource {
 
+    private String userName;
+    private String userPassword;
+    private String dataUrl;
 
+    public void setUser(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public void setURL(String dataUrl) {
+        this.dataUrl = dataUrl;
+    }
 
     @Override
     public Connection getConnection() throws SQLException {
