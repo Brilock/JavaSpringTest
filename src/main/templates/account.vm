@@ -1,0 +1,6 @@
+<html>
+    <body>
+        Hello $user.name, this is your account!
+        <!-- list subscriptions etc -->
+    </body>
+</html>
